@@ -10,22 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myTable: UITableView!
     @IBOutlet weak var statusHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        statusHeight.constant = CommonUtility.isPortrait() ? 20 : 0
         myTable.register(UINib(nibName: "FriendTableViewCell", bundle: nil),
                          forCellReuseIdentifier: FriendTableViewCell.identifier)
         myTable.register(UINib(nibName: "MeTableViewCell", bundle: nil),
                            forCellReuseIdentifier: MeTableViewCell.identifier)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-//        statusHeight.constant = CommonUtility.isPortrait() ? 20 : 0
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,6 +26,10 @@ class HomeViewController: UIViewController {
         statusHeight.constant = CommonUtility.isPortrait() ? 20 : 0
     }
 
+
+    @IBAction func keyboardDidEndOnExit(_ sender: Any) {
+    }
+    
 }
 
 
@@ -43,7 +40,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
