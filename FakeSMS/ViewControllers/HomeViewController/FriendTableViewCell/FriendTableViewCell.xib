@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="FriendTableViewCell" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="FriendTableViewCell" customModule="FakeSMS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhQ-7h-yrz">
+                        <rect key="frame" x="16" y="4" width="216" height="66.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Friend Friend Friend Friend Friend" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05d-Ru-jKc">
+                                <rect key="frame" x="8" y="8" width="200" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.897879958152771" green="0.89772564172744751" blue="0.91833287477493286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="05d-Ru-jKc" firstAttribute="top" secondItem="rhQ-7h-yrz" secondAttribute="top" constant="8" id="02D-tQ-kwQ"/>
+                            <constraint firstAttribute="bottom" secondItem="05d-Ru-jKc" secondAttribute="bottom" constant="8" id="FGL-vi-hkx"/>
+                            <constraint firstItem="05d-Ru-jKc" firstAttribute="leading" secondItem="rhQ-7h-yrz" secondAttribute="leading" constant="8" id="Jvm-Gn-9Ez"/>
+                            <constraint firstAttribute="trailing" secondItem="05d-Ru-jKc" secondAttribute="trailing" constant="8" id="WEH-8h-W72"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rhQ-7h-yrz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="03h-IU-1X1"/>
+                    <constraint firstItem="rhQ-7h-yrz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="46G-9G-3H9"/>
+                    <constraint firstAttribute="bottom" secondItem="rhQ-7h-yrz" secondAttribute="bottom" constant="4" id="KPM-kn-z9X"/>
+                    <constraint firstItem="rhQ-7h-yrz" firstAttribute="width" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="7/10" id="xId-6b-HNA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="25" y="52.5"/>
+        </tableViewCell>
+    </objects>
+</document>

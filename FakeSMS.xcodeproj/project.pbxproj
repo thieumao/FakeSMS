@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8473B311E90BED200931D53 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8473B2F1E90BED200931D53 /* HomeViewController.swift */; };
-		F8473B321E90BED200931D53 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8473B301E90BED200931D53 /* HomeViewController.xib */; };
 		F89573681E90BB8F00238779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89573671E90BB8F00238779 /* AppDelegate.swift */; };
 		F895736F1E90BB8F00238779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F895736E1E90BB8F00238779 /* Assets.xcassets */; };
 		F89573721E90BB8F00238779 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F89573701E90BB8F00238779 /* LaunchScreen.storyboard */; };
+		F8B5F9561ED0AD050006D339 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B5F9551ED0AD050006D339 /* UIView+Extensions.swift */; };
+		F8B710721ED0208000E23FF3 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B710701ED0208000E23FF3 /* HomeViewController.xib */; };
+		F8B710731ED0208000E23FF3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B710711ED0208000E23FF3 /* HomeViewController.swift */; };
+		F8B710771ED02D3F00E23FF3 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B710751ED02D3F00E23FF3 /* FriendTableViewCell.swift */; };
+		F8B710781ED02D3F00E23FF3 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B710761ED02D3F00E23FF3 /* FriendTableViewCell.xib */; };
+		F8B7107C1ED02D6A00E23FF3 /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7107A1ED02D6A00E23FF3 /* MeTableViewCell.swift */; };
+		F8B7107D1ED02D6A00E23FF3 /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B7107B1ED02D6A00E23FF3 /* MeTableViewCell.xib */; };
+		F8E422121ED0A8DC002DE72C /* CommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E422111ED0A8DC002DE72C /* CommonUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F8473B2F1E90BED200931D53 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = View/Home/HomeViewController.swift; sourceTree = "<group>"; };
-		F8473B301E90BED200931D53 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = View/Home/HomeViewController.xib; sourceTree = "<group>"; };
 		F89573641E90BB8F00238779 /* FakeSMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FakeSMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89573671E90BB8F00238779 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F895736E1E90BB8F00238779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F89573711E90BB8F00238779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F89573731E90BB8F00238779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8B5F9551ED0AD050006D339 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
+		F8B710701ED0208000E23FF3 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewControllers/HomeViewController/HomeViewController.xib; sourceTree = "<group>"; };
+		F8B710711ED0208000E23FF3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController/HomeViewController.swift; sourceTree = "<group>"; };
+		F8B710751ED02D3F00E23FF3 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTableViewCell.swift; path = ViewControllers/HomeViewController/FriendTableViewCell/FriendTableViewCell.swift; sourceTree = "<group>"; };
+		F8B710761ED02D3F00E23FF3 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendTableViewCell.xib; path = ViewControllers/HomeViewController/FriendTableViewCell/FriendTableViewCell.xib; sourceTree = "<group>"; };
+		F8B7107A1ED02D6A00E23FF3 /* MeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeTableViewCell.swift; path = ViewControllers/HomeViewController/MeTableViewCell/MeTableViewCell.swift; sourceTree = "<group>"; };
+		F8B7107B1ED02D6A00E23FF3 /* MeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MeTableViewCell.xib; path = ViewControllers/HomeViewController/MeTableViewCell/MeTableViewCell.xib; sourceTree = "<group>"; };
+		F8E422111ED0A8DC002DE72C /* CommonUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonUtility.swift; path = Utility/CommonUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,37 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F8473B2A1E90BE2200931D53 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		F8473B2B1E90BE3000931D53 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Presenter;
-			sourceTree = "<group>";
-		};
-		F8473B2C1E90BE3D00931D53 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F8473B2D1E90BE6500931D53 /* Home */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		F8473B2D1E90BE6500931D53 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				F8473B2F1E90BED200931D53 /* HomeViewController.swift */,
-				F8473B301E90BED200931D53 /* HomeViewController.xib */,
-			);
-			name = Home;
-			sourceTree = "<group>";
-		};
 		F895735B1E90BB8F00238779 = {
 			isa = PBXGroup;
 			children = (
@@ -85,15 +66,68 @@
 		F89573661E90BB8F00238779 /* FakeSMS */ = {
 			isa = PBXGroup;
 			children = (
-				F8473B2A1E90BE2200931D53 /* Model */,
-				F8473B2C1E90BE3D00931D53 /* View */,
-				F8473B2B1E90BE3000931D53 /* Presenter */,
+				F8B5F9541ED0ACF10006D339 /* Extensions */,
+				F8E422101ED0A8B4002DE72C /* Utility */,
+				F8B7106E1ED01FDF00E23FF3 /* ViewControllers */,
 				F89573671E90BB8F00238779 /* AppDelegate.swift */,
 				F895736E1E90BB8F00238779 /* Assets.xcassets */,
 				F89573701E90BB8F00238779 /* LaunchScreen.storyboard */,
 				F89573731E90BB8F00238779 /* Info.plist */,
 			);
 			path = FakeSMS;
+			sourceTree = "<group>";
+		};
+		F8B5F9541ED0ACF10006D339 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F8B5F9551ED0AD050006D339 /* UIView+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		F8B7106E1ED01FDF00E23FF3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F8B7106F1ED01FFC00E23FF3 /* HomeViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F8B7106F1ED01FFC00E23FF3 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F8B710741ED02D1800E23FF3 /* FriendTableViewCell */,
+				F8B710791ED02D4400E23FF3 /* MeTableViewCell */,
+				F8B710711ED0208000E23FF3 /* HomeViewController.swift */,
+				F8B710701ED0208000E23FF3 /* HomeViewController.xib */,
+			);
+			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		F8B710741ED02D1800E23FF3 /* FriendTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F8B710751ED02D3F00E23FF3 /* FriendTableViewCell.swift */,
+				F8B710761ED02D3F00E23FF3 /* FriendTableViewCell.xib */,
+			);
+			name = FriendTableViewCell;
+			sourceTree = "<group>";
+		};
+		F8B710791ED02D4400E23FF3 /* MeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F8B7107A1ED02D6A00E23FF3 /* MeTableViewCell.swift */,
+				F8B7107B1ED02D6A00E23FF3 /* MeTableViewCell.xib */,
+			);
+			name = MeTableViewCell;
+			sourceTree = "<group>";
+		};
+		F8E422101ED0A8B4002DE72C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F8E422111ED0A8DC002DE72C /* CommonUtility.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +190,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B7107D1ED02D6A00E23FF3 /* MeTableViewCell.xib in Resources */,
 				F89573721E90BB8F00238779 /* LaunchScreen.storyboard in Resources */,
 				F895736F1E90BB8F00238779 /* Assets.xcassets in Resources */,
-				F8473B321E90BED200931D53 /* HomeViewController.xib in Resources */,
+				F8B710721ED0208000E23FF3 /* HomeViewController.xib in Resources */,
+				F8B710781ED02D3F00E23FF3 /* FriendTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,8 +205,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B5F9561ED0AD050006D339 /* UIView+Extensions.swift in Sources */,
+				F8B710771ED02D3F00E23FF3 /* FriendTableViewCell.swift in Sources */,
+				F8E422121ED0A8DC002DE72C /* CommonUtility.swift in Sources */,
+				F8B7107C1ED02D6A00E23FF3 /* MeTableViewCell.swift in Sources */,
 				F89573681E90BB8F00238779 /* AppDelegate.swift in Sources */,
-				F8473B311E90BED200931D53 /* HomeViewController.swift in Sources */,
+				F8B710731ED0208000E23FF3 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -273,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
