@@ -12,6 +12,8 @@ class MeTableViewCell: UITableViewCell {
     
     static let identifier = "MeTableViewCell"
 
+    @IBOutlet weak var label: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +24,9 @@ class MeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
+    func update(_ value: String) {
+        label.text = value
+    }
+
 }

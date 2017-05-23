@@ -50,6 +50,9 @@
                     <constraint firstAttribute="trailing" secondItem="0Ow-q5-vFX" secondAttribute="trailing" constant="16" id="ook-Dv-WGT"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="label" destination="lHC-yh-4rp" id="Jh1-MF-Py0"/>
+            </connections>
             <point key="canvasLocation" x="25" y="72"/>
         </tableViewCell>
     </objects>
