@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,9 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hem-7w-pN5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
+                        <connections>
+                            <action selector="endKeyboardButtonPush:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wWT-hy-dha"/>
+                        </connections>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhQ-7h-yrz">
                         <rect key="frame" x="16" y="4" width="216" height="66.5"/>
                         <subviews>
@@ -45,8 +51,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="rhQ-7h-yrz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="03h-IU-1X1"/>
+                    <constraint firstAttribute="bottom" secondItem="Hem-7w-pN5" secondAttribute="bottom" id="0mm-uY-chm"/>
                     <constraint firstItem="rhQ-7h-yrz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="46G-9G-3H9"/>
                     <constraint firstAttribute="bottom" secondItem="rhQ-7h-yrz" secondAttribute="bottom" constant="4" id="KPM-kn-z9X"/>
+                    <constraint firstItem="Hem-7w-pN5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="a1n-cO-iX8"/>
+                    <constraint firstItem="Hem-7w-pN5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eu7-xh-pUi"/>
+                    <constraint firstAttribute="trailing" secondItem="Hem-7w-pN5" secondAttribute="trailing" id="jHu-48-EBE"/>
                     <constraint firstItem="rhQ-7h-yrz" firstAttribute="width" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="7/10" id="xId-6b-HNA"/>
                 </constraints>
             </tableViewCellContentView>

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FakeSMS" customModuleProvider="target">
             <connections>
+                <outlet property="bottonInputViewConstraint" destination="Opn-QD-peV" id="fL9-c3-A6y"/>
+                <outlet property="inputTextField" destination="sdT-Jw-gA4" id="yuU-TZ-UPX"/>
                 <outlet property="myTable" destination="OAQ-MU-CD5" id="x66-FO-UQP"/>
                 <outlet property="segmentedControl" destination="HPg-Yv-oUQ" id="4Bz-4t-1JT"/>
+                <outlet property="sendButton" destination="zWA-GK-iRQ" id="f2r-9F-RHy"/>
                 <outlet property="statusHeight" destination="fhz-vq-Cfj" id="I8h-lL-wkd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -98,8 +101,8 @@
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HPg-Yv-oUQ">
                             <rect key="frame" x="127" y="8" width="121" height="29"/>
                             <segments>
-                                <segment title="ME"/>
                                 <segment title="FRIEND"/>
+                                <segment title="ME"/>
                             </segments>
                             <connections>
                                 <action selector="segmentedControlValueChanged:" destination="-1" eventType="valueChanged" id="PmP-VR-HuZ"/>
@@ -108,10 +111,16 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CG2-mb-son">
                             <rect key="frame" x="16" y="7" width="34" height="30"/>
                             <state key="normal" title="Save"/>
+                            <connections>
+                                <action selector="saveButtonPush:" destination="-1" eventType="touchUpInside" id="SOH-va-seY"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoD-fp-Xn7">
                             <rect key="frame" x="311" y="7" width="48" height="30"/>
                             <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelButtonPush:" destination="-1" eventType="touchUpInside" id="8qe-Av-jNS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,15 +148,18 @@
                         <outlet property="delegate" destination="-1" id="FMc-OO-gHW"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1C-6g-AnF">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1C-6g-AnF" userLabel="Input View">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWA-GK-iRQ">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWA-GK-iRQ">
                             <rect key="frame" x="329" y="7" width="36" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="eC5-A9-jRg"/>
                             </constraints>
                             <state key="normal" title="Send"/>
+                            <connections>
+                                <action selector="sendButtonPush:" destination="-1" eventType="touchUpInside" id="GDO-sY-5ql"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdT-Jw-gA4">
                             <rect key="frame" x="10" y="7" width="305" height="30"/>
@@ -155,7 +167,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <action selector="keyboardDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="64f-SO-Fx7"/>
+                                <outlet property="delegate" destination="-1" id="3mX-sD-3Rv"/>
                             </connections>
                         </textField>
                     </subviews>
@@ -164,6 +176,7 @@
                         <constraint firstItem="sdT-Jw-gA4" firstAttribute="centerY" secondItem="e1C-6g-AnF" secondAttribute="centerY" id="4Fm-zL-zcH"/>
                         <constraint firstItem="zWA-GK-iRQ" firstAttribute="leading" secondItem="sdT-Jw-gA4" secondAttribute="trailing" constant="14" id="AFQ-i7-drF"/>
                         <constraint firstItem="zWA-GK-iRQ" firstAttribute="centerY" secondItem="e1C-6g-AnF" secondAttribute="centerY" id="IF5-cH-Xhh"/>
+                        <constraint firstAttribute="height" constant="44" id="c9D-15-tPp"/>
                         <constraint firstItem="sdT-Jw-gA4" firstAttribute="leading" secondItem="e1C-6g-AnF" secondAttribute="leading" constant="10" id="dxR-C8-dZf"/>
                         <constraint firstAttribute="trailing" secondItem="zWA-GK-iRQ" secondAttribute="trailing" constant="10" id="luK-8X-9aj"/>
                     </constraints>
@@ -172,15 +185,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="jsr-fq-moe" firstAttribute="trailing" secondItem="auV-9q-MUK" secondAttribute="trailing" id="3se-N5-I4P"/>
-                <constraint firstAttribute="bottom" secondItem="e1C-6g-AnF" secondAttribute="bottom" id="6H1-Is-if4"/>
                 <constraint firstItem="e1C-6g-AnF" firstAttribute="top" secondItem="OAQ-MU-CD5" secondAttribute="bottom" id="AQ5-Z9-Lxu"/>
                 <constraint firstAttribute="trailing" secondItem="e1C-6g-AnF" secondAttribute="trailing" id="Cwf-n5-KV9"/>
                 <constraint firstAttribute="trailing" secondItem="0Tj-3O-JzK" secondAttribute="trailing" id="Djm-ha-7p0"/>
                 <constraint firstItem="auV-9q-MUK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OOu-Vg-z1C"/>
                 <constraint firstItem="e1C-6g-AnF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OY4-Vj-KdV"/>
+                <constraint firstAttribute="bottom" secondItem="e1C-6g-AnF" secondAttribute="bottom" id="Opn-QD-peV"/>
                 <constraint firstItem="cZ4-GL-Bnq" firstAttribute="top" secondItem="auV-9q-MUK" secondAttribute="bottom" id="T8b-Hh-pbJ"/>
                 <constraint firstItem="auV-9q-MUK" firstAttribute="top" secondItem="0Tj-3O-JzK" secondAttribute="bottom" id="TLa-JT-xRH"/>
-                <constraint firstAttribute="bottom" secondItem="OAQ-MU-CD5" secondAttribute="bottom" constant="44" id="Zzl-vU-0EO"/>
                 <constraint firstItem="jsr-fq-moe" firstAttribute="bottom" secondItem="auV-9q-MUK" secondAttribute="bottom" id="aEs-NY-0ao"/>
                 <constraint firstItem="OAQ-MU-CD5" firstAttribute="top" secondItem="auV-9q-MUK" secondAttribute="bottom" constant="0.5" id="aJm-T9-K1W"/>
                 <constraint firstItem="0Tj-3O-JzK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b0p-TH-ull"/>

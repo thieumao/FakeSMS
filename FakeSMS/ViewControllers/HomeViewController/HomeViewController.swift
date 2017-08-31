@@ -11,74 +11,104 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var myTable: UITableView!
+    @IBOutlet weak var bottonInputViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var statusHeight: NSLayoutConstraint!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
 
     var messages = [Message]()
+    var isFriend = true
+    
+    var isCanSend = false {
+        didSet{
+            sendButton.isEnabled = isCanSend
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myTable.register(UINib(nibName: "FriendTableViewCell", bundle: nil),
-                         forCellReuseIdentifier: FriendTableViewCell.identifier)
-        myTable.register(UINib(nibName: "MeTableViewCell", bundle: nil),
-                           forCellReuseIdentifier: MeTableViewCell.identifier)
-        getMessages()
+        myTable.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: FriendTableViewCell.identifier)
+        myTable.register(UINib(nibName: "MeTableViewCell", bundle: nil), forCellReuseIdentifier: MeTableViewCell.identifier)
+        inputTextField.delegate = self
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         statusHeight.constant = CommonUtility.isPortrait() ? 20 : 0
     }
-
-
-    @IBAction func keyboardDidEndOnExit(_ sender: Any) {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func handleKeyboardWillShowNotification(_ notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboard = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue{
+                let heightKeyboard = keyboard.cgRectValue.size.height
+                bottonInputViewConstraint.constant = heightKeyboard
+                myTable.reloadData()
+                scrollBottonTableView()
+            }
+        }
+    }
+    
+    func handleKeyboardWillHideNotification(_ notification: NSNotification) {
+        bottonInputViewConstraint.constant = 0
+        myTable.reloadData()
+        scrollBottonTableView()
+    }
+    
+    private func scrollBottonTableView() {
+        if messages.count > 0 {
+            myTable.scrollToRow(at: IndexPath(item:messages.count - 1, section: 0), at: .bottom, animated: true)
+        }
+//        if myTable.contentSize.height > myTable.frame.size.height {
+//            let offset = CGPoint(x: 0, y: myTable.contentSize.height - myTable.frame.size.height)
+//            myTable.setContentOffset(offset, animated: true)
+//        }
+    }
+    
+    // MARK: IBAction
+    @IBAction func sendButtonPush(_ sender: Any) {
+        print("Send")
+        let text: String = inputTextField.text ?? ""
+        let message = Message(value: text, isFriend: isFriend)
+        messages.append(message)
+        myTable.reloadData()
+        inputTextField.text = ""
+        scrollBottonTableView()
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
-        print(segmentedControl.selectedSegmentIndex)
-        let isFriend
-    }
-
-    func getMessages() {
-        let message1 = Message(value: "Friend", isFriend: false)
-        let message2 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message3 = Message(value: "Friend Friend Friend Friend Friend ", isFriend: false)
-        let message4 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message5 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message6 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message7 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message8 = Message(value: "Friend FriendFriend ", isFriend: false)
-        let message9 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message10 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message11 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message12 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message13 = Message(value: "Nguyen Van Thieu")
-        let message14 = Message(value: "Nguyen Thi Thuy Linh", isFriend: false)
-        messages.append(message1)
-        messages.append(message2)
-        messages.append(message3)
-        messages.append(message4)
-        messages.append(message5)
-        messages.append(message6)
-        messages.append(message7)
-        messages.append(message8)
-        messages.append(message9)
-        messages.append(message10)
-        messages.append(message11)
-        messages.append(message12)
-        messages.append(message13)
-        messages.append(message14)
+        print(segmentedControl.selectedSegmentIndex) // 0 = friend, 1 = me
+        isFriend = segmentedControl.selectedSegmentIndex == 0
     }
     
+    @IBAction func saveButtonPush(_ sender: Any) {
+        print("Save")
+    }
+    
+    @IBAction func cancelButtonPush(_ sender: Any) {
+        print("Cancel")
+    }
+
 }
 
 
 extension HomeViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -98,6 +128,9 @@ extension HomeViewController: UITableViewDataSource {
                 return UITableViewCell()
         }
         cell.update(value)
+        cell.closeKeyboard = { [unowned self] in
+            self.view.endEditing(true)
+        }
         return cell
     }
     
@@ -107,6 +140,9 @@ extension HomeViewController: UITableViewDataSource {
                 return UITableViewCell()
         }
         cell.update(value)
+        cell.closeKeyboard = { [unowned self] in
+            self.view.endEditing(true)
+        }
         return cell
     }
     
@@ -126,4 +162,14 @@ extension HomeViewController: UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
     
+}
+
+extension HomeViewController: UITextFieldDelegate {
+
+    func textFieldDidChange(_ textField: UITextField) {
+        if let textInput = textField.text {
+            isCanSend = textInput.characters.count > 0
+        }
+    }
+
 }

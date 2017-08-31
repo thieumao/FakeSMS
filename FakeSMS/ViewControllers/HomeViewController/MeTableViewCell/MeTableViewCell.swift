@@ -11,6 +11,7 @@ import UIKit
 class MeTableViewCell: UITableViewCell {
     
     static let identifier = "MeTableViewCell"
+    var closeKeyboard: ((Void) -> Void)?
 
     @IBOutlet weak var label: UILabel!
 
@@ -29,4 +30,8 @@ class MeTableViewCell: UITableViewCell {
         label.text = value
     }
 
+    @IBAction func endKeyboardButtonPush(_ sender: Any) {
+        closeKeyboard?()
+    }
+    
 }
