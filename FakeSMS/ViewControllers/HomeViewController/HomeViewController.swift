@@ -13,8 +13,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var myTable: UITableView!
     @IBOutlet weak var statusHeight: NSLayoutConstraint!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
 
     var messages = [Message]()
+    var isFriend = true
+    
+    var isCanSend = false {
+        didSet{
+            sendButton.isEnabled = isCanSend
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +32,8 @@ class HomeViewController: UIViewController {
         myTable.register(UINib(nibName: "MeTableViewCell", bundle: nil),
                            forCellReuseIdentifier: MeTableViewCell.identifier)
         getMessages()
+        inputTextField.delegate = self
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidLayoutSubviews() {
@@ -30,55 +41,37 @@ class HomeViewController: UIViewController {
         statusHeight.constant = CommonUtility.isPortrait() ? 20 : 0
     }
 
-
-    @IBAction func keyboardDidEndOnExit(_ sender: Any) {
-    }
-
-    @IBAction func segmentedControlValueChanged(_ sender: Any) {
-        print(segmentedControl.selectedSegmentIndex)
-        let isFriend
-    }
-
     func getMessages() {
-        let message1 = Message(value: "Friend", isFriend: false)
-        let message2 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message3 = Message(value: "Friend Friend Friend Friend Friend ", isFriend: false)
-        let message4 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message5 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message6 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message7 = Message(value: "Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend Friend ", isFriend: false)
-        let message8 = Message(value: "Friend FriendFriend ", isFriend: false)
-        let message9 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message10 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message11 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message12 = Message(value: "Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me Me ")
-        let message13 = Message(value: "Nguyen Van Thieu")
-        let message14 = Message(value: "Nguyen Thi Thuy Linh", isFriend: false)
-        messages.append(message1)
-        messages.append(message2)
-        messages.append(message3)
-        messages.append(message4)
-        messages.append(message5)
-        messages.append(message6)
-        messages.append(message7)
-        messages.append(message8)
-        messages.append(message9)
-        messages.append(message10)
-        messages.append(message11)
-        messages.append(message12)
+        let message13 = Message(value: "This is my friend")
+        let message14 = Message(value: "This is me", isFriend: false)
         messages.append(message13)
         messages.append(message14)
     }
     
+    // MARK: IBAction
+    @IBAction func sendButtonPush(_ sender: Any) {
+        print("Send")
+        //let message = Message(value: "This is me", isFriend: isFriend)
+    }
+
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        print(segmentedControl.selectedSegmentIndex) // 0 = friend, 1 = me
+        isFriend = segmentedControl.selectedSegmentIndex == 0
+    }
+    
+    @IBAction func saveButtonPush(_ sender: Any) {
+        print("Save")
+    }
+    
+    @IBAction func cancelButtonPush(_ sender: Any) {
+        print("Cancel")
+    }
+
 }
 
 
 extension HomeViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -126,4 +119,14 @@ extension HomeViewController: UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
     
+}
+
+extension HomeViewController: UITextFieldDelegate {
+
+    func textFieldDidChange(_ textField: UITextField) {
+        if let textInput = textField.text {
+            isCanSend = textInput.characters.count > 0
+        }
+    }
+
 }
